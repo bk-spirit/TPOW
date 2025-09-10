@@ -4,8 +4,7 @@ A static website for The Present of Work community, exploring how to make work m
 
 ## 🌐 Live Site
 
-Visit us at: [https://presentofwork.github.io](https://presentofwork.github.io)
-
+Visit us at: [(https://bk-spirit.github.io/TPOW/)](https://bk-spirit.github.io/TPOW/)
 ## 📖 About The Present of Work
 
 The Present of Work is a 6-year-old commons-based ecosystem helping people transform their relationship with work from extraction to regeneration. We're hundreds of people across dozens of organizations, quietly transforming how work works through monthly gatherings, project tracks, and professional development.
