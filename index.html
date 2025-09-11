@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Present of Work</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+        
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e5e7eb;
+            z-index: 50;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+        
+        .logo {
+            font-weight: bold;
+            font-size: 1.25rem;
+            color: #1f2937;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: #4b5563;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #16a34a;
+        }
+        
+        .cta-btn {
+            background: #16a34a;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        
+        .cta-btn:hover {
+            background: #15803d;
+        }
+        
+        /* Mobile menu */
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 20px;
+        }
+        
+        .mobile-menu.active {
+            display: block;
+        }
+        
+        .mobile-menu a {
+            display: block;
+            color: #4b5563;
+            text-decoration: none;
+            padding: 10px 0;
+            border-bottom: 1px solid #f3f4f6;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .mobile-toggle {
+                display: block;
+            }
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dbeafe 100%);
+            padding: 120px 20px 80px;
+            text-align: center;
+        }
+        
+        .hero-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Entry Point Selector */
+        .entry-selector {
+            margin-bottom: 40px;
+        }
+        
+        .entry-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+        
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #d1d5db;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .dot.active {
+            background: #16a34a;
+        }
+        
+        .dot:hover {
+            background: #9ca3af;
+        }
+        
+        .entry-hint {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-bottom: 8px;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            color: #4b5563;
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            align-items: center;
+        }
+        
+        @media (min-width: 640px) {
+            .hero-buttons {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+        
+        .btn-primary {
+            background: #16a34a;
+            color: white;
+            padding: 12px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.125rem;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background: #15803d;
+            transform: scale(1.05);
+        }
+        
+        .btn-secondary {
+            border: 2px solid #16a34a;
+            color: #16a34a;
+            padding: 10px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.125rem;
+            transition: all 0.3s;
+        }
+        
+        .btn-secondary:hover {
+            background: #f0fdf4;
+        }
+        
+        /* Problems Section */
+        .problems {
+            padding: 80px 20px;
+        }
+        
+        .problems-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .problems h2 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 32px;
+        }
+        
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+        
+        .problem-card {
+            background: #f9fafb;
+            padding: 24px;
+            border-radius: 8px;
+            text-align: left;
+        }
+        
+        .problem-card h3 {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 12px;
+        }
+        
+        .problem-card p {
+            color: #4b5563;
+        }
+        
+        .problems .subtitle {
+            font-size: 1.125rem;
+            color: #6b7280;
+            font-style: italic;
+            margin-top: 32px;
+        }
+        
+        /* Community Stats */
+        .stats {
+            background: #16a34a;
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .stats-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .stats h2 {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 24px;
+        }
+        
+        .stats p {
+            font-size: 1.25rem;
+            color: #bbf7d0;
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 24px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 8px;
+        }
+        
+        .stat-label {
+            color: #bbf7d0;
+        }
+        
+        /* Vision Section */
+        .vision {
+            background: linear-gradient(135deg, #dbeafe 0%, #f0fdf4 100%);
+            padding: 80px 20px;
+        }
+        
+        .vision-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .vision h2 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 32px;
+        }
+        
+        .vision .intro {
+            font-size: 1.25rem;
+            color: #4b5563;
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
+        
+        .vision-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            text-align: left;
+        }
+        
+        .vision-card {
+            background: white;
+            padding: 24px;
+            border-radius: 8px;
+        }
+        
+        .vision-card h3 {
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .vision-card.non-negotiables h3 {
+            color: #16a34a;
+        }
+        
+        .vision-card.growth h3 {
+            color: #2563eb;
+        }
+        
+        .vision-card ul {
+            color: #4b5563;
+            padding-left: 20px;
+        }
+        
+        .vision-card li {
+            margin-bottom: 8px;
+        }
+        
+        /* Projects Preview */
+        .projects-preview {
+            padding: 80px 20px;
+            background: #f9fafb;
+        }
+        
+        .projects-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .projects-preview h2 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 32px;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-bottom: 32px;
+            text-align: left;
+        }
+        
+        .project-card {
+            background: white;
+            padding: 24px;
+            border-radius: 8px;
+            border-left: 4px solid #16a34a;
+        }
+        
+        .project-card h3 {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 12px;
+        }
+        
+        .project-card p {
+            color: #4b5563;
+            margin-bottom: 16px;
+        }
+        
+        .project-card .highlight {
+            background: #f0fdf4;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            color: #15803d;
+        }
+        
+        /* Join Section */
+        .join {
+            padding: 80px 20px;
+        }
+        
+        .join-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .join h2 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1f2937;
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        
+        .join-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+        
+        .join-card {
+            padding: 32px;
+            border-radius: 12px;
+        }
+        
+        .join-card.jump-in {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dbeafe 100%);
+        }
+        
+        .join-card.dip-toes {
+            background: linear-gradient(135deg, #fefbeb 0%, #fed7aa 100%);
+        }
+        
+        .join-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 16px;
+        }
+        
+        .join-card p {
+            color: #4b5563;
+            margin-bottom: 24px;
+        }
+        
+        .join-card .btn-primary {
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .join-card.dip-toes .btn-primary {
+            background: #ea580c;
+        }
+        
+        .join-card.dip-toes .btn-primary:hover {
+            background: #dc2626;
+        }
+        
+        .email-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .email-form input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        
+        .email-form input:focus {
+            outline: none;
+            border-color: #16a34a;
+            box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.1);
+        }
+        
+        .solo-section {
+            text-align: center;
+            background: #f9fafb;
+            padding: 32px;
+            border-radius: 12px;
+        }
+        
+        .solo-section h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 16px;
+        }
+        
+        .solo-section p {
+            color: #4b5563;
+            margin-bottom: 24px;
+        }
+        
+        .btn-outline {
+            border: 2px solid #6b7280;
+            color: #4b5563;
+            padding: 10px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .btn-outline:hover {
+            background: #f3f4f6;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #1f2937;
+            color: white;
+            padding: 48px 20px;
+            text-align: center;
+        }
+        
+        .footer-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 16px;
+        }
+        
+        .footer p {
+            color: #9ca3af;
+            margin-bottom: 16px;
+        }
+        
+        .footer a {
+            color: #4ade80;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            color: #22c55e;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 100;
+        }
+        
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .modal-header {
+            position: sticky;
+            top: 0;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-header h2 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #1f2937;
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #6b7280;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .close-btn:hover {
+            color: #374151;
+        }
+        
+        .modal-body {
+            padding: 20px;
+        }
+        
+        .modal-section {
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .modal-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .modal-section h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 12px;
+        }
+        
+        .modal-section p {
+            color: #4b5563;
+            font-size: 0.875rem;
+            margin-bottom: 12px;
+        }
+        
+        .modal-footer {
+            border-top: 1px solid #e5e7eb;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .modal-footer p {
+            color: #6b7280;
+            font-size: 0.875rem;
+            margin-bottom: 12px;
+        }
+        
+        .modal-footer .btn-grid {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .modal-footer .btn-primary,
+        .modal-footer .btn-outline {
+            flex: 1;
+            text-align: center;
+            padding: 8px 16px;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="#" class="logo">presentofwork.org</a>
+            
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="how-we-work.html">How We Work</a>
+                <a href="guild.html">Guild</a>
+                <a href="about.html">About</a>
+                <button onclick="openModal()" style="background: none; border: none; color: #4b5563; cursor: pointer; transition: color 0.3s;" onmouseover="this.style.color='#16a34a'" onmouseout="this.style.color='#4b5563'">Learn More</button>
+            </div>
+            
+            <a href="https://calendar.google.com" class="cta-btn" target="_blank">Next Gathering</a>
+            
+            <button class="mobile-toggle" onclick="toggleMenu()">☰</button>
+        </div>
+        
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#home" onclick="toggleMenu()">Home</a>
+            <a href="projects.html" onclick="toggleMenu()">Projects</a>
+            <a href="how-we-work.html" onclick="toggleMenu()">How We Work</a>
+            <a href="guild.html" onclick="toggleMenu()">Guild</a>
+            <a href="about.html" onclick="toggleMenu()">About</a>
+            <a href="#" onclick="openModal(); toggleMenu()">Learn More</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <!-- Entry Point Selector -->
+            <div class="entry-selector">
+                <div class="entry-dots">
+                    <div class="dot active" onclick="changeEntry(0)"></div>
+                    <div class="dot" onclick="changeEntry(1)"></div>
+                    <div class="dot" onclick="changeEntry(2)"></div>
+                    <div class="dot" onclick="changeEntry(3)"></div>
+                </div>
+                <p class="entry-hint">Different starting points for different people</p>
+            </div>
+
+            <h1 id="hero-headline">What if work could serve life instead of drain it?</h1>
+            <p id="hero-subtext">We're exploring how to make work more human, sustainable, and meaningful—without sacrificing effectiveness or success.</p>
+            
+            <div class="hero-buttons">
+                <a href="#join" class="btn-primary">Find Your People</a>
+                <a href="#experiments" class="btn-secondary">See What's Possible</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problems Section -->
+    <section class="problems">
+        <div class="problems-container">
+            <h2>You might be noticing...</h2>
+            <div class="problems-grid">
+                <div class="problem-card">
+                    <h3>The Mismatch</h3>
+                    <p>Industrial-age processes designed for predictable work, facing 21st-century challenges that require creativity, collaboration, and systems thinking.</p>
+                </div>
+                <div class="problem-card">
+                    <h3>Untapped Potential</h3>
+                    <p>Teams capable of so much more, but held back by outdated structures, meaningless metrics, and cultures that treat humans as resources to optimize.</p>
+                </div>
+                <div class="problem-card">
+                    <h3>Missing Meaning</h3>
+                    <p>Work that pays well but feels disconnected from addressing the challenges that actually matter—climate, inequality, community resilience.</p>
+                </div>
+            </div>
+            <p class="subtitle">
+                Traditional solutions—wellness programs, productivity hacks, leadership training—treat symptoms while leaving extractive systems intact.
+            </p>
+        </div>
+    </section>
+
+    <!-- Community Stats -->
+    <section class="stats">
+        <div class="stats-container">
+            <h2>You're not alone in this</h2>
+            <p>
+                Six years ago, we started as a small group asking "What if work could serve life instead of drain it?" 
+                Now we're hundreds of people across dozens of organizations, quietly transforming how work works.
+            </p>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">200+</div>
+                    <div class="stat-label">Monthly gathering participants</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Organizations experimenting</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">Years of sustained practice</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section class="vision">
+        <div class="vision-container">
+            <h2>What we're building toward</h2>
+            <p class="intro">
+                A world where work serves life—where Monday mornings feel like possibility, not punishment. 
+                Where organizations operate from wholeness instead of extraction. Where your job contributes to solutions rather than perpetuating problems.
+            </p>
+            
+            <div class="vision-grid">
+                <div class="vision-card non-negotiables">
+                    <h3>What we will not compromise on:</h3>
+                    <ul>
+                        <li>Humans are whole beings, not resources to optimize</li>
+                        <li>Real change takes time—we're not selling quick fixes</li>
+                        <li>Both inner work and systems change are necessary</li>
+                        <li>Community accountability over individual advancement</li>
+                        <li>Planetary wellbeing is not optional</li>
+                    </ul>
+                </div>
+                <div class="vision-card growth">
+                    <h3>What we're growing into:</h3>
+                    <ul>
+                        <li>More accessible pathways for financial transition</li>
+                        <li>Deeper racial and class diversity in our community</li>
+                        <li>Rural and blue-collar perspectives on regenerative work</li>
+                        <li>Policy influence at municipal and state levels</li>
+                        <li>1000+ organizations experimenting by 2030</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Preview -->
+    <section id="experiments" class="projects-preview">
+        <div class="projects-container">
+            <h2>What we're building together</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>ATEM (Alternatives to Extractive Models)</h3>
+                    <p>Research and experimentation track exploring gift economies, worker cooperatives, and regenerative workplace practices.</p>
+                    <div class="highlight">
+                        <strong>Active experiments:</strong> Time banking with 15 businesses • 3 cooperative transitions • 4-day work week pilots
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h3>Connected Communities</h3>
+                    <p>Partnerships with Starter Cultures, Intentional Society, and 1000+ intentional communities exploring regenerative living.</p>
+                    <div class="highlight">
+                        <strong>Current focus:</strong> Deliberately developmental community building • Post-conventional culture creation
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h3>Professional Guild</h3>
+                    <p>40 people earning $60-80k annually through our cooperative, offering consulting and training in regenerative work practices.</p>
+                    <div class="highlight">
+                        <strong>Support available:</strong> $200k mutual aid fund • Career transition coaching • Skills development
+                    </div>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 32px;">
+                <a href="projects.html" class="btn-secondary">Explore All Projects</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- Join Section -->
+    <section id="join" class="join">
+        <div class="join-container">
+            <h2>Ready to find your people?</h2>
+            
+            <div class="join-grid">
+                <div class="join-card jump-in">
+                    <h3>Jump Right In</h3>
+                    <p>
+                        Come to our next monthly gathering. Meet people, hear stories, see what we're building. 
+                        First Wednesday of every month, 7pm ET online.
+                    </p>
+                    <a href="https://calendar.google.com" class="btn-primary" target="_blank">Register for Next Gathering</a>
+                </div>
+
+                <div class="join-card dip-toes">
+                    <h3>Dip Your Toes</h3>
+                    <p>
+                        Get our monthly stories and experiments in your inbox. See what resonates. 
+                        Join when you're ready.
+                    </p>
+                    <div class="email-form">
+                        <input type="email" id="email-input" placeholder="your@email.com">
+                        <button class="btn-primary" onclick="handleEmailSignup()">Send Me Stories</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="solo-section">
+                <h3>Not quite ready for community?</h3>
+                <p>
+                    That's okay. Download our guide to experimenting with regenerative work practices in your current job. 
+                    No meetings, no commitment—just practical ideas you can try quietly.
+                </p>
+                <button class="btn-outline" onclick="downloadGuide()">Download Solo Practitioner Guide</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <h3>The Present of Work</h3>
+            <p>
+                Six years of people proving that work can serve life instead of drain it.
+            </p>
+            <p>
+                Connected with folks at Center for Humane Tech, Omidyar, Starter Cultures, 
+                Intentional Society, and dozens of other organizations exploring what comes after extraction.
+            </p>
+            <p>
+                Questions? Stories? Ideas?<br>
+                <a href="mailto:contact@presentofwork.org">contact@presentofwork.org</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Deep Dive Modal -->
+    <div id="deepDiveModal" class="modal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h2>The Real Questions</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3>Is this actually working?</h3>
+                    <p><strong>Honestly?</strong> About 30% of people stick around long-term. Some experiments fail. Changing work culture is generational work.</p>
+                    <p><strong>What works:</strong> Organizations committing 6+ months see real culture shifts. We've helped launch 12 cooperatives.</p>
+                    <p><strong>What doesn't:</strong> We're mostly urban, educated, tech-adjacent. We struggle to serve people with serious financial constraints.</p>
+                </div>
+
+                <div class="modal-section">
+                    <h3>The money question</h3>
+                    <p><strong>Real talk:</strong> Most people have financial privilege - savings, partners with steady income, or freelancing skills.</p>
+                    <p><strong>Guild model:</strong> 40 people earn $60-80k annually through our professional cooperative doing consulting work.</p>
+                    <p><strong>Transition support:</strong> $200k mutual aid fund supporting 50+ career transitions over 6-18 months.</p>
+                </div>
+
+                <div class="modal-section">
+                    <h3>Who this isn't for</h3>
+                    <p>People looking for quick networking, guaranteed income, or who can't commit to 3+ months of consistent participation.</p>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <p class="text-center text-gray-600 mb-3 text-sm">
+                    Still interested? Questions?
+                </p>
+                <div class="btn-grid">
+                    <button 
+                        onclick="window.open('https://calendar.google.com/calendar/u/0?cid=Y185NTUzNWNjODgwMzg2ZjFhZTNjOTk1M2NlNjAyNzVlNTJiMmUwN2QzYWU3OGMwYzYyYjBlYWViMmE5NDExM2JmQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20', '_blank')"
+                        class="btn-primary"
+                    >
+                        Join Next Gathering
+                    </button>
+                    <a 
+                        href="mailto:contact@presentofwork.org"
+                        class="btn-outline"
+                    >
+                        Email Questions
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Entry point switching
+        const entryPoints = [
+            {
+                headline: "What if work could serve life instead of drain it?",
+                subtext: "We're exploring how to make work more human, sustainable, and meaningful—without sacrificing effectiveness or success."
+            },
+            {
+                headline: "Does your job feel disconnected from what matters?", 
+                subtext: "You're successful, but something's missing. We're a community finding ways to align work with purpose and values."
+            },
+            {
+                headline: "Ready to experiment with regenerative work practices?",
+                subtext: "Join practitioners testing alternatives to extraction—from worker cooperatives to 4-day work weeks to authentic team cultures."
+            },
+            {
+                headline: "Does your job feel like it's slowly killing your soul?",
+                subtext: "You're not broken. The system is. We're a community of people who've found ways to make work serve life instead of drain it."
+            }
+        ];
+
+        function changeEntry(index) {
+            // Update active dot
+            document.querySelectorAll('.dot').forEach((dot, i) => {
+                if (i === index) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+            
+            // Update headline and subtext
+            document.getElementById('hero-headline').textContent = entryPoints[index].headline;
+            document.getElementById('hero-subtext').textContent = entryPoints[index].subtext;
+        }
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
+        }
+
+        // Modal functions
+        function openModal() {
+            document.getElementById('deepDiveModal').classList.add('active');
+        }
+
+        function closeModal(event) {
+            if (!event || event.target === event.currentTarget || event.target.classList.contains('close-btn')) {
+                document.getElementById('deepDiveModal').classList.remove('active');
+            }
+        }
+
+        // Email signup
+        function handleEmailSignup() {
+            const email = document.getElementById('email-input').value;
+            if (email) {
+                alert('Thanks! Check your email for a welcome message.');
+                document.getElementById('email-input').value = '';
+            }
+        }
+
+        // Download guide
+        function downloadGuide() {
+            const guideContent = `THE PRESENT OF WORK
+Solo Practitioner Guide: Experimenting with Regenerative Work in Your Current Job
+
+=================================================================
+
+INTRODUCTION
+
+You don't need to quit your job or join a community to start transforming your relationship with work. This guide offers practical experiments you can try quietly within your current role—ways to bring more humanity, meaning, and sustainability to your daily work life.
+
+These aren't about becoming more productive or advancing your career. They're about reclaiming work as something that serves life rather than drains it.
+
+=================================================================
+
+PART 1: ENERGY - SUSTAINING YOUR VITALITY
+
+The Problem: Most workplaces extract energy faster than they restore it.
+
+Quiet Experiments:
+
+→ The 90-Minute Rule
+Work in focused 90-minute blocks, then take a real break. Not a "check email" break—stand up, look outside, breathe. Your brain works in natural 90-minute cycles.
+
+→ Meeting Meditation
+Start meetings you lead with 30 seconds of silence. "Let's take a moment to arrive." Watch how this shifts the energy.
+
+→ Boundary Texting
+Stop responding to work messages after a specific time (8pm? 7pm?). Don't announce it—just stop. See what happens.
+
+→ The Sunday Question
+Every Sunday evening, ask: "What gave me energy this week? What drained it?" Notice patterns over months.
+
+=================================================================
+
+PART 2: RELATIONSHIPS - AUTHENTIC CONNECTION
+
+The Problem: Most workplace relationships stay transactional and surface-level.
+
+Quiet Experiments:
+
+→ Real Check-ins
+When someone asks "How are you?" give a real answer occasionally. "Actually, I'm feeling pretty scattered today, but grateful to be working on this project." Watch what happens.
+
+→ Appreciation Practice
+Once a week, tell someone specifically what you appreciate about working with them. Not their output—them as a person.
+
+→ Conflict as Gift
+Next time you disagree with someone, get curious instead of defensive. "Help me understand your perspective on this." Most workplace conflict is actually misaligned assumptions.
+
+→ The Vulnerability Experiment
+Share something slightly more personal in team meetings. Your weekend plans, what you're learning, a challenge you're facing. Notice how others respond.
+
+=================================================================
+
+PART 3: MEANING - CONNECTING TO PURPOSE
+
+The Problem: Work feels disconnected from what actually matters to you.
+
+Quiet Experiments:
+
+→ Values Archaeology
+List your 5 core values. Then audit your last week: How much time did you spend on activities that align with each value? What would need to change?
+
+→ Impact Mapping
+Draw connections between your daily tasks and their ultimate impact. How does your spreadsheet work serve real humans? Make the connections visible.
+
+→ No Autopilot
+Once a day, pause and ask: "Why does this matter?" before starting a task. If you can't find a meaningful answer, explore whether the task needs to be done differently—or at all.
+
+→ Purpose Partnership
+Find one colleague who also cares about meaning. Share what gives you energy and ask what gives them energy. Support each other's most meaningful work.
+
+=================================================================
+
+PART 4: MASTERY - DEVELOPING GIFTS
+
+The Problem: Most professional development optimizes you for existing systems rather than growing your unique capacities.
+
+Quiet Experiments:
+
+→ Gift Inventory
+What do you naturally do well that others find difficult? What do colleagues come to you for? Start naming and developing these natural strengths.
+
+→ Learn Outside the Box
+Spend 30 minutes a week learning something completely unrelated to your job that fascinates you. Watch how it shows up in your work.
+
+→ Teaching Practice
+Explain something you know well to someone else. Teaching reveals gaps in your own understanding and deepens mastery.
+
+→ Experiment Documentation
+Keep track of what you try and what you learn. Most workplaces don't create space for reflection—you'll need to create it yourself.
+
+=================================================================
+
+PART 5: PERSPECTIVE - OPENING TO DIFFERENT WAYS
+
+The Problem: Organizational culture often rewards conformity and punishes different approaches.
+
+Quiet Experiments:
+
+→ Meeting Anthropology
+Observe meeting dynamics like an anthropologist. Who speaks first? Who gets interrupted? What assumptions go unquestioned? Share observations carefully.
+
+→ Beginner's Mind
+Once a week, approach a routine task as if you've never done it before. What do you notice that autopilot usually misses?
+
+→ Cross-Pollination
+Spend time with colleagues from different departments. What challenges do they face that you never see? How might your work serve theirs better?
+
+→ Question Infrastructure
+Ask "Why do we do it this way?" about one routine process each month. Often the answer is "because that's how we've always done it." What might be possible instead?
+
+=================================================================
+
+INTEGRATION
+
+Start with one domain that calls to you most. Try one experiment for a month before adding others. The goal isn't to do all of these—it's to discover what serves both your wellbeing and your effectiveness.
+
+Remember: You're not trying to fix a broken system overnight. You're experimenting with how to be more fully human within the constraints you currently face, while slowly expanding what's possible.
+
+Many people find that these quiet experiments eventually create conditions for bigger changes—in their role, their organization, or their career direction. But that's not the goal. The goal is to reclaim work as something that nourishes rather than depletes you, starting exactly where you are.
+
+=================================================================
+
+COMMUNITY
+
+If these experiments resonate and you want to connect with others exploring similar questions, visit presentofwork.org. We gather monthly to share learnings and support each other's experiments.
+
+But you don't need community to start. You just need curiosity and the willingness to try something different.
+
+What will you experiment with first?
+
+=================================================================
+
+© The Present of Work - presentofwork.org
+This work is licensed under Creative Commons - share and adapt freely.`;
+            
+            const blob = new Blob([guideContent], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'solo-practitioner-guide.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }
+    </script>
+                    

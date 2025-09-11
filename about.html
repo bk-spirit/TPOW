@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - The Present of Work</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+        
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e5e7eb;
+            z-index: 50;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+        
+        .logo {
+            font-weight: bold;
+            font-size: 1.25rem;
+            color: #1f2937;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: #4b5563;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #16a34a;
+        }
+        
+        .cta-btn {
+            background: #16a34a;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        
+        .cta-btn:hover {
+            background: #15803d;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .mobile-toggle {
+                display: block;
+            }
+        }
+        
+        .content {
+            padding-top: 80px;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 16px;
+        }
+        
+        .header p {
+            font-size: 1.25rem;
+            color: #6b7280;
+        }
+        
+        .section {
+            margin-bottom: 80px;
+        }
+        
+        .section h2 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 24px;
+        }
+        
+        .section h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 16px;
+            margin-top: 32px;
+        }
+        
+        .section p {
+            color: #4b5563;
+            margin-bottom: 16px;
+        }
+        
+        .origin-story {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border-left: 4px solid #16a34a;
+            border-radius: 8px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+        
+        .principles-grid {
+            display: grid;
+            gap: 24px;
+            margin: 32px 0;
+        }
+        
+        .principle-card {
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 4px solid;
+        }
+        
+        .principle-card.wholeness {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border-left-color: #16a34a;
+        }
+        
+        .principle-card.fractal {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border-left-color: #2563eb;
+        }
+        
+        .principle-card.systems {
+            background: linear-gradient(135deg, #fefbeb 0%, #fef3c7 100%);
+            border-left-color: #d97706;
+        }
+        
+        .principle-card.complexity {
+            background: linear-gradient(135deg, #fdf4ff 0%, #fae8ff 100%);
+            border-left-color: #9333ea;
+        }
+        
+        .principle-card h4 {
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .principle-card.wholeness h4 { color: #15803d; }
+        .principle-card.fractal h4 { color: #1d4ed8; }
+        .principle-card.systems h4 { color: #b45309; }
+        .principle-card.complexity h4 { color: #7c3aed; }
+        
+        .advisors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 24px 0;
+        }
+        
+        .advisor-card {
+            background: #f9fafb;
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+        }
+        
+        .advisor-card h4 {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+        
+        .advisor-card p {
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+        
+        .vision-box {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+        
+        .vision-box h3 {
+            color: #1d4ed8;
+            margin-bottom: 16px;
+        }
+        
+        .vision-box p {
+            color: #1e40af;
+            margin-bottom: 12px;
+        }
+        
+        .acknowledgments-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .acknowledgments-box h4 {
+            color: #374151;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .acknowledgments-box p {
+            color: #4b5563;
+            font-size: 0.875rem;
+            margin-bottom: 8px;
+        }
+        
+        .partners-list {
+            background: #f0f9ff;
+            border-left: 4px solid #0ea5e9;
+            border-radius: 6px;
+            padding: 16px;
+            margin: 16px 0;
+        }
+        
+        .partners-list p {
+            color: #0c4a6e;
+            font-size: 0.875rem;
+        }
+        
+        .gaps-box {
+            background: #fef2f2;
+            border: 2px solid #fca5a5;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .gaps-box h4 {
+            color: #dc2626;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .gaps-box p {
+            color: #991b1b;
+            margin-bottom: 8px;
+        }
+        
+        .footer {
+            background: #1f2937;
+            color: white;
+            padding: 48px 20px;
+            text-align: center;
+            margin-top: 80px;
+        }
+        
+        .footer-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 16px;
+        }
+        
+        .footer p {
+            color: #9ca3af;
+            margin-bottom: 16px;
+        }
+        
+        .footer a {
+            color: #4ade80;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            color: #22c55e;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">presentofwork.org</a>
+            
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="how-we-work.html">How We Work</a>
+                <a href="guild.html">Guild</a>
+                <a href="about.html" class="active">About</a>
+            </div>
+            
+            <a href="https://calendar.google.com/calendar/u/0?cid=Y185NTUzNWNjODgwMzg2ZjFhZTNjOTk1M2NlNjAyNzVlNTJiMmUwN2QzYWU3OGMwYzYyYjBlYWViMmE5NDExM2JmQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20" class="cta-btn" target="_blank">Community Calendar</a>
+            
+            <button class="mobile-toggle">☰</button>
+        </div>
+    </nav>
+
+    <div class="content">
+        <!-- Header -->
+        <div class="header">
+            <h1>About Us</h1>
+            <p>Origins, vision, principles, and the people behind the work</p>
+        </div>
+
+        <!-- Origins -->
+        <div class="section">
+            <h2>Our Origins</h2>
+            
+            <div class="origin-story">
+                <p><strong>The Present of Work began six years ago as a practice community, co-originating with Starter Cultures—"a village of practice, a nurturing space to learn, grow, and heal together."</strong></p>
+                
+                <p>Founded by practitioners who experienced firsthand the disconnection between conventional work structures and human flourishing, we started as a small group exploring what regenerative work relationships might look like.</p>
+                
+                <p>Like fermentation cultures that break down what was into something new and nourishing, our work creates conditions for the transformation of work itself. What began as intimate conversations about meaning and purpose has evolved into a living commons—a shared space where we're building platforms of relationships and weaving networks of meaning that enable people to live lives of purpose and contribution.</p>
+            </div>
+
+            <h3>Our Structure</h3>
+            <p>Rather than operating as a traditional organization, we function as a commons-based ecosystem. This means we're collectively stewarded rather than owned, focused on creating shared value rather than extracting profit, and designed to grow through contribution rather than consumption. Our various business applications and professional services exist to support and resource the commons, not the other way around.</p>
+        </div>
+
+        <!-- Vision -->
+        <div class="section">
+            <h2>What We're Working Toward</h2>
+            
+            <div class="vision-box">
+                <h3>Our Vision</h3>
+                <p>We envision communities of practice sprouting everywhere—"The Present of Education," "The Present of Healthcare," "The Present of Technology"—each applying these frameworks to their domain while contributing insights back to the broader ecosystem. We see new organizational forms emerging that operate from principles of wholeness, regeneration, and shared prosperity.</p>
+                
+                <p>This isn't about replacing existing systems overnight, but creating parallel structures and demonstrating what becomes possible when we organize around our full humanity.</p>
+            </div>
+
+            <h3>Why Now?</h3>
+            <p>The old models of work clearly aren't serving us or the planet. Climate change, inequality, mental health crises, and social fragmentation are all connected to extractive approaches to human activity. At the same time, we have unprecedented opportunities to create new forms of collaboration, learning, and impact.</p>
+        </div>
+
+        <!-- Core Principles -->
+        <div class="section">
+            <h2>Core Principles</h2>
+            <p>These aren't just nice ideas—they're our core beliefs that actively guide how we make decisions, design gatherings, approach projects, and relate to each other. They represent a fundamental shift from extractive to regenerative ways of being and working together.</p>
+
+            <div class="principles-grid">
+                <div class="principle-card wholeness">
+                    <h4>Wholeness</h4>
+                    <p>We recognize that humans are whole beings, not fragmented resources. Our work honors the full spectrum of human experience rather than treating people as partial selves. For example, instead of checking emotions at the door, we might start meetings by acknowledging how people are actually feeling and what they need to show up fully.</p>
+                </div>
+
+                <div class="principle-card fractal">
+                    <h4>Fractal Thinking</h4>
+                    <p>Patterns that serve transformation at the individual level also serve at team, organizational, and societal levels. The work we do on ourselves mirrors and supports the work we do in the world. Learning to listen deeply to our own inner conflicts helps us facilitate better dialogue in team disputes.</p>
+                </div>
+
+                <div class="principle-card systems">
+                    <h4>Systems Awareness</h4>
+                    <p>We approach challenges through a systems lens, recognizing that lasting change happens through shifting relationships and patterns rather than fixing isolated problems. This might mean addressing workplace stress by examining organizational culture and decision-making processes, not just offering individual wellness programs.</p>
+                </div>
+
+                <div class="principle-card complexity">
+                    <h4>Complexity Consciousness</h4>
+                    <p>We embrace uncertainty, emergence, and non-linear change. Rather than trying to control outcomes, we create conditions for transformation and trust in organic intelligence. Instead of rigid strategic plans, we might use sensing practices to notice what wants to emerge and adapt accordingly.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Acknowledgments -->
+        <div class="section">
+            <h2>Acknowledgments</h2>
+            
+            <div class="acknowledgments-box">
+                <h4>Intellectual Foundations</h4>
+                <p>This work builds on wisdom from diverse sources: ancient traditions like stoicism and contemplative practices, contemporary approaches like Internal Family Systems and Theory U, and insights from thinkers like Bayo Akomolafe (who explores the intersection of psychology and social change), Nora Bateson (who studies complex systems), and the late Gregory Bateson (who pioneered systems thinking). We also draw from methodologies like T-group (group dynamics) and Circling (relational practice).</p>
+            </div>
+
+            <h3>Advisors & Guides</h3>
+            <div class="advisors-grid">
+                <div class="advisor-card">
+                    <h4>June Holley</h4>
+                    <p>Network weaving pioneer</p>
+                </div>
+                <div class="advisor-card">
+                    <h4>Nora Bateson</h4>
+                    <p>Systems thinking and warm data</p>
+                </div>
+                <div class="advisor-card">
+                    <h4>Forrest Landry</h4>
+                    <p>Complexity science</p>
+                </div>
+                <div class="advisor-card">
+                    <h4>Bayo Akomolafe</h4>
+                    <p>Psychology and social change</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Community Partners -->
+        <div class="section">
+            <h2>Community Partners</h2>
+            
+            <div class="partners-list">
+                <p>We're connected with diverse partners including Denizen, Center for Humane Tech, AI companies/investors, Omidyar, DWeb network, Interstitium, PSFG and its network of funders, Resource Transition Circle, Fyodor's network, Shamil, Brian Stout, Agnes' network, fixchr, AI Robotics, Permaculture Colab, and many others who share our commitment to regenerative approaches to human collaboration and development.</p>
+            </div>
+        </div>
+
+        <!-- What We're Still Learning -->
+        <div class="section">
+            <h2>What We're Still Learning</h2>
+            <p>We're not perfect, and we want to be honest about our limitations and blind spots:</p>
+
+            <div class="gaps-box">
+                <h4>Economic Realism Gap</h4>
+                <p>Our approaches work well for people with some financial flexibility, but we haven't adequately addressed the needs of people with significant financial obligations—mortgages, student loans, medical debt, family support responsibilities—who can't easily transition to potentially lower-income regenerative work. We're actively seeking input from people in these circumstances to design more realistic pathways.</p>
+            </div>
+
+            <div class="gaps-box">
+                <h4>Cultural Bridge Building</h4>
+                <p>Our ecosystem currently attracts people already somewhat aligned with regenerative values. We recognize we're missing pathways for engaging people from conservative backgrounds, traditional business environments, or those skeptical of alternative economic models. We want to invite voices from these communities to help us understand how to build approaches that work for them.</p>
+            </div>
+
+            <div class="gaps-box">
+                <h4>Accountability and Course Correction</h4>
+                <p>While we emphasize emergence and experimentation, we're still developing robust ways to measure success and address situations where regenerative experiments cause unintended harm or simply don't work as intended. We need better feedback loops and more honest assessment of when our approaches aren't serving people well.</p>
+            </div>
+
+            <h3>How You Can Help</h3>
+            <p>If you represent perspectives or experiences we're missing, we want to learn from you. Whether you're aligned with our current direction or represent a perspective we're missing, we want to hear from you. Our goal isn't to create an echo chamber of like-minded people, but to develop approaches to work and economics that can serve human flourishing across different backgrounds, circumstances, and value systems.</p>
+
+            <p><strong>Email us:</strong> <a href="mailto:contact@presentofwork.org">contact@presentofwork.org</a> with your perspective on what we're missing, specific challenges you face that our current pathways don't address, or ideas for how we could better serve people from your background or circumstances.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <h3>The Present of Work</h3>
+            <p>Six years of people proving that work can serve life instead of drain it.</p>
+            <p>Help us build something that works for more people. <a href="mailto:contact@presentofwork.org">contact@presentofwork.org</a></p>
+        </div>
+    </footer>
+</body>
+</html>
