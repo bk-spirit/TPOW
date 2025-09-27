@@ -92,185 +92,578 @@
             }
         }
         
-        .content {
-            padding-top: 80px;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding-left: 20px;
-            padding-right: 20px;
-        }
-        
-        .header {
+        /* Hero Section */
+        .hero {
+            padding: 120px 20px 60px;
+            background: linear-gradient(135deg, #f0fdf4 0%, #dbeafe 100%);
             text-align: center;
-            margin-bottom: 60px;
         }
         
-        .header h1 {
+        .hero-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
             font-size: 3rem;
             font-weight: bold;
             color: #1f2937;
             margin-bottom: 16px;
         }
         
-        .header p {
+        .hero p {
             font-size: 1.25rem;
+            color: #4b5563;
+            margin-bottom: 32px;
+        }
+        
+        /* Interactive Layer Selector */
+        .layer-selector {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin: 40px 0;
+        }
+        
+        .layer-tab {
+            padding: 12px 24px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .layer-tab.active {
+            border-color: #16a34a;
+            background: #f0fdf4;
+            color: #15803d;
+        }
+        
+        .layer-tab:hover {
+            border-color: #16a34a;
+        }
+        
+        .layer-content {
+            display: none;
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            margin-top: 24px;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .layer-content.active {
+            display: block;
+        }
+        
+        .layer-content h3 {
+            font-size: 1.5rem;
+            color: #1f2937;
+            margin-bottom: 16px;
+        }
+        
+        .layer-content p {
+            color: #4b5563;
+            margin-bottom: 20px;
+        }
+        
+        /* Current Focus Section */
+        .current-focus {
+            padding: 80px 20px;
+            background: white;
+        }
+        
+        .current-focus-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .focus-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        
+        .focus-header h2 {
+            font-size: 2.5rem;
+            color: #1f2937;
+            margin-bottom: 16px;
+        }
+        
+        .focus-header p {
+            font-size: 1.125rem;
             color: #6b7280;
         }
         
-        .section {
-            margin-bottom: 80px;
+        .atem-showcase {
+            background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%);
+            border-radius: 16px;
+            padding: 40px;
+            border-left: 6px solid #9333ea;
         }
         
-        .section h2 {
+        .atem-title {
             font-size: 2rem;
-            font-weight: bold;
-            color: #1f2937;
+            color: #7c3aed;
+            margin-bottom: 16px;
+        }
+        
+        .atem-subtitle {
+            font-size: 1.25rem;
+            color: #6b21a8;
             margin-bottom: 24px;
+            font-weight: 500;
         }
         
-        .project-card {
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-left: 4px solid #16a34a;
-            border-radius: 8px;
-            padding: 32px;
+        .atem-description {
+            color: #6b21a8;
             margin-bottom: 32px;
+            font-size: 1.125rem;
         }
         
-        .project-card h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin: 32px 0;
+        }
+        
+        .timeline-item {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid #e0e7ff;
+        }
+        
+        .timeline-number {
+            background: #7c3aed;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+            font-weight: bold;
+        }
+        
+        .timeline-item h4 {
             color: #1f2937;
-            margin-bottom: 16px;
-        }
-        
-        .project-card p {
-            color: #4b5563;
-            margin-bottom: 16px;
-        }
-        
-        .highlight-box {
-            background: #f0fdf4;
-            border: 1px solid #16a34a;
-            border-radius: 6px;
-            padding: 16px;
-            margin: 16px 0;
-        }
-        
-        .highlight-box h4 {
-            font-weight: 600;
-            color: #15803d;
             margin-bottom: 8px;
+            font-size: 1rem;
         }
         
-        .highlight-box ul {
-            color: #15803d;
-            padding-left: 20px;
-        }
-        
-        .highlight-box li {
-            margin-bottom: 4px;
-        }
-        
-        .engagement-box {
-            background: #f9fafb;
-            border-radius: 6px;
-            padding: 16px;
-            margin-top: 16px;
-        }
-        
-        .engagement-box p {
+        .timeline-item p {
             color: #4b5563;
             font-size: 0.875rem;
-            margin-bottom: 8px;
         }
         
-        .engagement-box strong {
+        .apply-section {
+            background: white;
+            border: 2px solid #7c3aed;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            margin-top: 32px;
+        }
+        
+        .apply-section h4 {
+            color: #7c3aed;
+            margin-bottom: 12px;
+            font-size: 1.25rem;
+        }
+        
+        .apply-section p {
+            color: #6b21a8;
+            margin-bottom: 20px;
+        }
+        
+        .btn-primary {
+            background: #7c3aed;
+            color: white;
+            padding: 12px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
+            display: inline-block;
+        }
+        
+        .btn-primary:hover {
+            background: #6d28d9;
+        }
+        
+        /* Learning Spaces Grid */
+        .learning-spaces {
+            padding: 80px 20px;
+            background: #f9fafb;
+        }
+        
+        .learning-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .learning-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        
+        .learning-header h2 {
+            font-size: 2.5rem;
             color: #1f2937;
+            margin-bottom: 16px;
         }
         
-        .community-grid {
+        .spaces-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 24px;
-            margin-bottom: 32px;
         }
         
-        .community-card {
-            background: #f8fafc;
-            border-left: 4px solid #2563eb;
-            border-radius: 8px;
-            padding: 24px;
-        }
-        
-        .community-card h4 {
-            font-weight: 600;
-            color: #1f2937;
-            margin-bottom: 12px;
-        }
-        
-        .community-card p {
-            color: #4b5563;
-            margin-bottom: 12px;
-            font-size: 0.875rem;
-        }
-        
-        .principles-list {
+        .space-card {
             background: white;
+            border-radius: 12px;
+            padding: 24px;
             border: 1px solid #e5e7eb;
-            border-radius: 6px;
-            padding: 16px;
-            margin: 12px 0;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
         
-        .principles-list ul {
-            padding-left: 20px;
+        .space-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
         
-        .principles-list li {
-            color: #4b5563;
-            margin-bottom: 6px;
+        .space-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+        
+        .space-icon.comm { background: #dcfce7; color: #16a34a; }
+        .space-icon.conflict { background: #fef3c7; color: #d97706; }
+        .space-icon.soul { background: #e0e7ff; color: #6366f1; }
+        .space-icon.guild { background: #fce7f3; color: #ec4899; }
+        
+        .space-card h3 {
+            font-size: 1.25rem;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+        
+        .space-card .subtitle {
+            color: #6b7280;
             font-size: 0.875rem;
+            margin-bottom: 12px;
+        }
+        
+        .space-card p {
+            color: #4b5563;
+            margin-bottom: 16px;
+            font-size: 0.875rem;
+        }
+        
+        .space-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 16px 0;
+            padding: 12px;
+            background: #f9fafb;
+            border-radius: 6px;
+            font-size: 0.875rem;
+        }
+        
+        .space-details div {
+            color: #4b5563;
+        }
+        
+        .space-details strong {
+            color: #1f2937;
         }
         
         .btn-secondary {
+            background: transparent;
             border: 2px solid #16a34a;
             color: #16a34a;
-            padding: 10px 24px;
-            border-radius: 8px;
+            padding: 8px 16px;
+            border-radius: 6px;
             text-decoration: none;
-            font-size: 1rem;
+            font-size: 0.875rem;
             transition: all 0.3s;
             display: inline-block;
-            margin-top: 16px;
         }
         
         .btn-secondary:hover {
             background: #f0fdf4;
         }
         
-        .footer {
-            background: #1f2937;
-            color: white;
-            padding: 48px 20px;
-            text-align: center;
-            margin-top: 80px;
+        /* Services Section */
+        .services {
+            padding: 80px 20px;
+            background: white;
         }
         
-        .footer-container {
-            max-width: 800px;
+        .services-container {
+            max-width: 1000px;
             margin: 0 auto;
         }
         
-        .footer h3 {
-            font-size: 1.25rem;
-            font-weight: bold;
+        .services-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+        
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .service-column {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 32px;
+        }
+        
+        .service-column h3 {
+            color: #1f2937;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .service-item {
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 16px;
             margin-bottom: 16px;
+        }
+        
+        .service-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .service-item h4 {
+            color: #1f2937;
+            margin-bottom: 6px;
+        }
+        
+        .service-item p {
+            color: #4b5563;
+            font-size: 0.875rem;
+        }
+        
+        .hire-us-btn {
+            background: #16a34a;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
+            display: inline-block;
+            margin-top: 20px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .hire-us-btn:hover {
+            background: #15803d;
+        }
+        
+        /* Network Partners */
+        .network {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+        
+        .network-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .network h2 {
+            font-size: 2.5rem;
+            color: #1f2937;
+            margin-bottom: 16px;
+        }
+        
+        .network p {
+            color: #4b5563;
+            margin-bottom: 40px;
+            font-size: 1.125rem;
+        }
+        
+        .partners-visual {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        
+        .partner-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .partner-card:hover {
+            border-color: #0ea5e9;
+            background: #f0f9ff;
+        }
+        
+        .partner-card h4 {
+            color: #1f2937;
+            margin-bottom: 6px;
+            font-size: 1rem;
+        }
+        
+        .partner-card p {
+            color: #6b7280;
+            font-size: 0.75rem;
+            margin: 0;
+        }
+        
+        /* How to Engage */
+        .engage {
+            padding: 80px 20px;
+            background: white;
+        }
+        
+        .engage-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .engage h2 {
+            font-size: 2.5rem;
+            color: #1f2937;
+            margin-bottom: 16px;
+        }
+        
+        .engage > p {
+            color: #4b5563;
+            margin-bottom: 40px;
+            font-size: 1.125rem;
+        }
+        
+        .pathway-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        
+        .pathway {
+            background: #f9fafb;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: left;
+            border: 2px solid #e5e7eb;
+            transition: all 0.3s;
+        }
+        
+        .pathway:hover {
+            border-color: #16a34a;
+            background: #f0fdf4;
+        }
+        
+        .pathway h3 {
+            color: #1f2937;
+            margin-bottom: 12px;
+        }
+        
+        .pathway p {
+            color: #4b5563;
+            margin-bottom: 16px;
+            font-size: 0.875rem;
+        }
+        
+        .pathway .btn-secondary {
+            margin-top: 8px;
+        }
+        
+        /* Support Section */
+        .support {
+            padding: 60px 20px;
+            background: #16a34a;
+            color: white;
+            text-align: center;
+        }
+        
+        .support-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .support h2 {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+        
+        .support p {
+            color: #bbf7d0;
+            margin-bottom: 24px;
+        }
+        
+        .support-options {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .support-btn {
+            background: white;
+            color: #16a34a;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .support-btn:hover {
+            background: #f0fdf4;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #1f2937;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
         }
         
         .footer p {
             color: #9ca3af;
-            margin-bottom: 16px;
+            margin-bottom: 8px;
         }
         
         .footer a {
@@ -297,199 +690,239 @@
                 <a href="about.html">About</a>
             </div>
             
-            <a href="https://calendar.google.com/calendar/u/0?cid=Y185NTUzNWNjODgwMzg2ZjFhZTNjOTk1M2NlNjAyNzVlNTJiMmUwN2QzYWU3OGMwYzYyYjBlYWViMmE5NDExM2JmQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20" class="cta-btn" target="_blank">Projects Calendar</a>
+            <a href="https://calendar.google.com" class="cta-btn" target="_blank">Next CommDojo</a>
             
             <button class="mobile-toggle">☰</button>
         </div>
     </nav>
 
-    <div class="content">
-        <!-- Header -->
-        <div class="header">
-            <h1>Current Projects</h1>
-            <p>Deep dive into our active experiments and collaborations</p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <h1>Our Learning Ecosystem</h1>
+            <p>Three interconnected layers where individual learning translates into collective impact</p>
+            
+            <!-- Interactive Layer Selector -->
+            <div class="layer-selector">
+                <div class="layer-tab active" onclick="showLayer('soil')">Soil/Commons</div>
+                <div class="layer-tab" onclick="showLayer('knots')">Knots</div>
+                <div class="layer-tab" onclick="showLayer('social-web')">Social Web</div>
+            </div>
+            
+            <div class="layer-content active" id="soil-content">
+                <h3>🌱 Soil/Commons Layer</h3>
+                <p>Free resources, community calls, and open-source wisdom that feeds everything else. Like rich forest soil, this layer provides nutrients for all our learning.</p>
+            </div>
+            
+            <div class="layer-content" id="knots-content">
+                <h3>🪢 Knots Layer</h3>
+                <p>Monthly dojos and learning guilds where people develop specific skills while tending relationships. As Panikkar said, "A person is a knot in a net of relationships."</p>
+            </div>
+            
+            <div class="layer-content" id="social-web-content">
+                <h3>🕸️ Social Web Layer</h3>
+                <p>Deep dive labs and organizational support where individual learning translates into collective action and systems transformation.</p>
+            </div>
         </div>
+    </section>
 
-        <!-- ATEM Section -->
-        <div class="section">
-            <div class="project-card">
-                <h3>ATEM (Alternatives to Extractive Models)</h3>
-                <p>A research and experimentation track exploring alternatives to extractive models at all levels through wisdom/awareness-based approaches. ATEM exists because most economic systems extract value from people and planet rather than regenerating them.</p>
+    <!-- Current Focus -->
+    <section class="current-focus" id="current-focus">
+        <div class="current-focus-container">
+            <div class="focus-header">
+                <h2>Current Focus</h2>
+                <p>Our signature 6-month exploration bringing diverse stakeholders together</p>
+            </div>
+            
+            <div class="atem-showcase">
+                <h3 class="atem-title">ATEM: Alternatives to Extractive Methods</h3>
+                <h4 class="atem-subtitle">Reimagining Philanthropy Lab</h4>
+                <p class="atem-description">
+                    Bringing together funders, recipients, and intermediaries to explore gift economy approaches beyond traditional trust-based, impact, or effective altruism models.
+                </p>
                 
-                <div class="highlight-box">
-                    <h4>Current Experiments in Detail:</h4>
-                    <ul>
-                        <li><strong>Time Banking with Local Businesses:</strong> 15 businesses and 200+ community members exchanging services based on time rather than money—one hour of childcare equals one hour of web design</li>
-                        <li><strong>Worker Cooperative Transitions:</strong> Supporting 3 businesses in transitioning to worker ownership through governance design and legal structure development</li>
-                        <li><strong>Gift Economy Research:</strong> Documenting successful gift economy models worldwide and testing dharma-based funding in our community</li>
-                        <li><strong>4-Day Work Week Pilots:</strong> Testing alternatives to the 40-hour work week with seasonal rhythms and 7-generation decision-making</li>
-                    </ul>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-number">1</div>
+                        <h4>Apply</h4>
+                        <p>Submit interest form with your philanthropy experience</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-number">2</div>
+                        <h4>6-Month Lab</h4>
+                        <p>Monthly sessions using warm data methodology</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-number">3</div>
+                        <h4>Action Projects</h4>
+                        <p>Real experiments in alternative funding approaches</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-number">4</div>
+                        <h4>Open Learning</h4>
+                        <p>Insights shared publicly for the commons</p>
+                    </div>
                 </div>
-
-                <div class="engagement-box">
-                    <p><strong>Who ATEM serves:</strong> Social entrepreneurs aligning business models with values, employees exploring cooperative ownership, community organizers developing local currency systems, business owners seeking alternatives to growth-at-all-costs models.</p>
-                    
-                    <p><strong>How to engage:</strong> Monthly research calls (third Tuesday), fee-based intensive cohorts for specific domains ($300-800 sliding scale), direct connection with ATEM stewards for organizational experiments.</p>
-                    
-                    <p><strong>Skills most helpful:</strong> Economics background, business experience, systems thinking, community organizing, group facilitation, or simply curiosity about how work and money could operate differently.</p>
+                
+                <div class="apply-section">
+                    <h4>Ready to explore alternatives to extractive philanthropy?</h4>
+                    <p>Applications open for the next cohort starting in 2025</p>
+                    <a href="mailto:contact@presentofwork.org?subject=ATEM Lab Application" class="btn-primary">Apply for ATEM Lab</a>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Connected Communities Section -->
-        <div class="section">
-            <h2>Connected Communities</h2>
-            <p>These partnerships show how TPOW creates bridges between theory and lived practice, offering direct pathways to experience alternative economic models.</p>
-
-            <div class="community-grid">
-                <div class="community-card">
-                    <h4>Starter Cultures - Co-Originating Partner</h4>
-                    <p><strong>The relationship:</strong> Co-originated six years ago from the same core question about creating conditions for human transformation that serve both individual flourishing and collective change.</p>
+    <!-- Learning Spaces -->
+    <section class="learning-spaces" id="learning-spaces">
+        <div class="learning-container">
+            <div class="learning-header">
+                <h2>Active Learning Spaces</h2>
+                <p>Monthly practice communities using gift economy principles</p>
+            </div>
+            
+            <div class="spaces-grid">
+                <div class="space-card">
+                    <div class="space-icon comm">💬</div>
+                    <h3>CommDojo</h3>
+                    <p class="subtitle">Authentic Communication Practice</p>
+                    <p>Monthly practice using T-group and Bohm dialogue methods. Learn to speak and listen from deeper places while building lasting relationships.</p>
                     
-                    <p><strong>What makes them unique:</strong> They operate as "a village of practice—a nurturing space to learn, grow, and heal together" with a deliberately developmental approach.</p>
-                    
-                    <div class="principles-list">
-                        <strong>Their five core principles:</strong>
-                        <ul>
-                            <li><strong>Interdependence:</strong> Learning and healing through relationship while working to heal codependent patterns</li>
-                            <li><strong>Living Ecosystems:</strong> Drawing inspiration from natural cycles of growth, stability, decomposition, and renewal</li>
-                            <li><strong>Deliberately Developmental:</strong> Supporting people in their self-authoring and self-transformative capacities</li>
-                            <li><strong>Embodied Alignment:</strong> Balancing inner work, life's work, and task work through all ways of knowing</li>
-                            <li><strong>Radical Presence:</strong> Using the present moment as teacher and creating with what emerges</li>
-                        </ul>
+                    <div class="space-details">
+                        <div><strong>When:</strong> First Tuesday, 7pm ET</div>
+                        <div><strong>Cost:</strong> Gift economy (dhana)</div>
+                        <div><strong>Format:</strong> 90 minutes online</div>
+                        <div><strong>Drop-in:</strong> Welcome anytime</div>
                     </div>
                     
-                    <p><strong>How to engage:</strong> Email community@startercultures.us to explore collaboration within their village of practice.</p>
+                    <a href="https://calendar.google.com" class="btn-secondary">Join Next Session</a>
                 </div>
-
-                <div class="community-card">
-                    <h4>Intentional Society - Developmental Practice Partner</h4>
-                    <p><strong>The relationship:</strong> 4+ years of community building (200+ sessions) providing tested models for developmental practice that TPOW draws from and contributes to.</p>
+                
+                <div class="space-card">
+                    <div class="space-icon conflict">⚖️</div>
+                    <h3>Conflict Kinship Dojo</h3>
+                    <p class="subtitle">Restorative Justice & Council</p>
+                    <p>Monthly gatherings exploring conflict as creative force using restorative justice circles and council processes.</p>
                     
-                    <p><strong>What makes them distinctive:</strong> "A congregation of friends devoted to growing ourselves and our society toward thriving futures" with focus on becoming "aware enough to see clearly, spacious enough to face anything, and wise enough to wield our power."</p>
-                    
-                    <div class="principles-list">
-                        <strong>Their three practice spaces:</strong>
-                        <ul>
-                            <li><strong>Practice Dojo:</strong> Open sessions for developmental-relational skill-building focusing on awareness, acceptance, and integrity</li>
-                            <li><strong>Members Community:</strong> Supportive friendship space for sustained practice together</li>
-                            <li><strong>Intentional Ventures:</strong> Ecosystem of aligned livelihood exploring meaningful work from developmental practice</li>
-                        </ul>
+                    <div class="space-details">
+                        <div><strong>When:</strong> Second Tuesday, 7pm ET</div>
+                        <div><strong>Cost:</strong> Gift economy (dhana)</div>
+                        <div><strong>Format:</strong> 2 hours online</div>
+                        <div><strong>Drop-in:</strong> Welcome anytime</div>
                     </div>
                     
-                    <p><strong>Connection to movements:</strong> Part of the Second Renaissance movement and Liminal Web scene exploring consciousness development and cultural transformation.</p>
+                    <a href="https://calendar.google.com" class="btn-secondary">Join Next Session</a>
+                </div>
+                
+                <div class="space-card">
+                    <div class="space-icon soul">🧘</div>
+                    <h3>Soul Space</h3>
+                    <p class="subtitle">Embodied Fishbowl Practice</p>
+                    <p>Exploring what emerges when we show up fully present to ourselves and each other through structured embodied practice.</p>
                     
-                    <p><strong>How to engage:</strong> Visit intentionalsociety.org for their Weekly Update, community sessions, and Developmental Practice Series.</p>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <h3>Foundation for Intentional Community - Resource Network</h3>
-                <p><strong>The relationship:</strong> FIC provides TPOW community members access to 1000+ intentional communities worldwide, bridging individual transformation work with residential community experiments.</p>
-                
-                <p><strong>What FIC offers TPOW practitioners:</strong> Starter guides for community building, educational courses, community matching services, and access to the BIPOC Intentional Community Circle supporting communities of color.</p>
-                
-                <div class="highlight-box">
-                    <h4>Types of communities in their network:</h4>
-                    <ul>
-                        <li>Ecovillages focused on ecological sustainability</li>
-                        <li>Cohousing communities balancing privacy with shared resources</li>
-                        <li>Housing cooperatives experimenting with affordable ownership models</li>
-                        <li>Communes exploring high levels of resource sharing</li>
-                        <li>Co-ops developing democratic decision-making structures</li>
-                    </ul>
-                </div>
-                
-                <p><strong>How this serves TPOW's mission:</strong> Many people drawn to regenerative work eventually want to live in community with others who share their values. FIC provides tested pathways while TPOW provides frameworks for work and economic relationships within communities.</p>
-                
-                <a href="https://ic.org" class="btn-secondary" target="_blank">Explore Community Directory</a>
-            </div>
-        </div>
-
-        <!-- Present of X Initiatives -->
-        <div class="section">
-            <div class="project-card">
-                <h3>"Present of X" Initiatives</h3>
-                <p>Self-organizing communities applying TPOW frameworks to specific domains. These exist because transformation needs to happen sector by sector with domain-specific expertise, serving practitioners wanting to transform their particular field using regenerative principles.</p>
-                
-                <div class="highlight-box">
-                    <h4>Current Active Initiatives:</h4>
-                    <ul>
-                        <li><strong>Present of Education:</strong> Exploring democratic schooling models, student-centered learning approaches, and teacher wellbeing initiatives</li>
-                        <li><strong>Present of Healthcare:</strong> Examining care-centered medical practices, practitioner burnout solutions, and patient advocacy approaches</li>
-                        <li><strong>Present of Technology:</strong> Developing humane tech practices, ethical AI development, and regenerative business models for tech companies</li>
-                    </ul>
-                </div>
-                
-                <div class="engagement-box">
-                    <p><strong>How to start your own:</strong> Connect with Network Weavers to explore launching a "Present of [Your Domain]" initiative. We provide frameworks, community support, and connection to others in your field.</p>
+                    <div class="space-details">
+                        <div><strong>When:</strong> Third Tuesday, 7pm ET</div>
+                        <div><strong>Cost:</strong> Gift economy (dhana)</div>
+                        <div><strong>Format:</strong> 90 minutes online</div>
+                        <div><strong>Drop-in:</strong> Welcome anytime</div>
+                    </div>
                     
-                    <p><strong>Skills helpful:</strong> Deep expertise in your chosen domain, community organizing experience, familiarity with systems change approaches.</p>
+                    <a href="https://calendar.google.com" class="btn-secondary">Join Next Session</a>
+                </div>
+                
+                <div class="space-card">
+                    <div class="space-icon guild">🎓</div>
+                    <h3>Learning Guilds</h3>
+                    <p class="subtitle">Intensive Skill Development</p>
+                    <p>8-12 week programs including Organizational Emergence Guild and Economic Livelihood Guild with mentorship and peer coaching.</p>
+                    
+                    <div class="space-details">
+                        <div><strong>Duration:</strong> 8-12 weeks</div>
+                        <div><strong>Cost:</strong> $75-150/month + scholarships</div>
+                        <div><strong>Format:</strong> Weekly sessions + mentoring</div>
+                        <div><strong>Apply:</strong> Seasonal cohorts</div>
+                    </div>
+                    
+                    <a href="mailto:contact@presentofwork.org?subject=Guild Application" class="btn-secondary">Apply for Guild</a>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Professional Services -->
-        <div class="section">
-            <div class="project-card">
-                <h3>Professional Services & Applications</h3>
-                <p>Organizations integrating our frameworks into their operations through consulting, training, and transformation projects that spread regenerative practices into the wider world.</p>
-                
-                <div class="highlight-box">
-                    <h4>Current Service Areas:</h4>
-                    <ul>
-                        <li><strong>Relational Dojo:</strong> Conflict transformation and collaborative decision-making training for teams</li>
-                        <li><strong>Meta Consultancy:</strong> Systems thinking and organizational patterns work, designing for emergence</li>
-                        <li><strong>Regenerative Business Practices:</strong> Shared ownership models, ecological decision-making, employee wellbeing initiatives</li>
-                        <li><strong>Cooperative Transitions:</strong> Supporting businesses in transitioning to worker ownership and shared governance</li>
-                    </ul>
+    <!-- Services -->
+    <section class="services">
+        <div class="services-container">
+            <div class="services-header">
+                <h2>Professional Services</h2>
+                <p>Individual and organizational support through our team and cooperative partners</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-column">
+                    <h3>Individual Support</h3>
+                    
+                    <div class="service-item">
+                        <h4>Journey Coaching</h4>
+                        <p>Executive coaching that honors both practical results and deeper meaning-making for leaders navigating transitions.</p>
+                    </div>
+                    
+                    <div class="service-item">
+                        <h4>Skill Development</h4>
+                        <p>One-on-one mentoring in facilitation, conflict navigation, organizational emergence, and gift economy principles.</p>
+                    </div>
+                    
+                    <a href="mailto:contact@presentofwork.org?subject=Individual Support" class="hire-us-btn">Schedule Discovery Call</a>
                 </div>
                 
-                <div class="engagement-box">
-                    <p><strong>For organizations:</strong> If you're running or part of an organization wanting to transform how it operates, our professional services provide frameworks, training, and ongoing support for culture change initiatives.</p>
+                <div class="service-column">
+                    <h3>Organizational Support</h3>
                     
-                    <p><strong>For practitioners:</strong> If you want to develop skills in organizational transformation, join our guild pathway to learn these approaches through commons participation and apply them professionally.</p>
+                    <div class="service-item">
+                        <h4>Work Tech/Power Design</h4>
+                        <p>Human-AI relations using adaptive governance and power analysis to preserve culture during technology adoption.</p>
+                    </div>
+                    
+                    <div class="service-item">
+                        <h4>Transformation Consulting</h4>
+                        <p>Art of Hosting, Open Space facilitation, and emergence-based change processes that build internal capacity.</p>
+                    </div>
+                    
+                    <div class="service-item">
+                        <h4>Custom Programs</h4>
+                        <p>Retreats, workshops, and training programs designed for your specific context and needs.</p>
+                    </div>
+                    
+                    <a href="mailto:contact@presentofwork.org?subject=Organizational Support" class="hire-us-btn">Request Proposal</a>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Partner Projects -->
-        <div class="section">
-            <h2>Partner Projects</h2>
-            <p>Collaborative initiatives with aligned organizations that share our commitment to regenerative work practices and democratic workplace transformation.</p>
-
-            <div class="project-card">
-                <h3>Colmenar Cooperative Consulting - Conflict Navigation Training</h3>
-                <p><strong>Partnership focus:</strong> Developing conflict resolution training specifically designed for worker cooperatives and democratic workplaces. Colmenar is a bilingual (Spanish/English) worker-owned cooperative specializing in cooperative development with a focus on racial and gender equity.</p>
-                
-                <div class="highlight-box">
-                    <h4>Joint Development: Cooperative Conflict Navigation Certification</h4>
-                    <ul>
-                        <li><strong>Level 1 Training:</strong> Six-session experiential program (April-June 2025) covering conflict fundamentals, relational skills, and cooperative-specific scenarios</li>
-                        <li><strong>Popular Education Approach:</strong> Values participant experience while building new frameworks for democratic conflict resolution</li>
-                        <li><strong>Bilingual Accessibility:</strong> All materials and facilitation available in Spanish and English</li>
-                        <li><strong>Solidarity Economy Principles:</strong> Recognizes interdependency and collective capacity to transform workplace relationships</li>
-                    </ul>
+    <!-- Network Partners -->
+    <section class="network">
+        <div class="network-container">
+            <h2>Our Network</h2>
+            <p>Connected partnerships that strengthen the whole ecosystem</p>
+            
+            <div class="partners-visual">
+                <div class="partners-grid">
+                    <div class="partner-card">
+                        <h4>Inquiring Systems Institute</h4>
+                        <p>Fiscal sponsor for educational work</p>
+                    </div>
+                    <div class="partner-card">
+                        <h4>CrowdWork Cooperative</h4>
+                        <p>Professional services & consulting</p>
+                    </div>
+                    <div class="partner-card">
+                        <h4>Intentional Society</h4>
+                        <p>Developmental practice community</p>
+                    </div>
+                    <div class="partner-card">
+                        <h4>Intentional Ventures</h4>
+                        <p>Aligned livelihood ecosystem</p>
+                    </div>
                 </div>
-
-                <div class="engagement-box">
-                    <p><strong>Who this serves:</strong> Worker cooperatives strengthening democratic culture, businesses transitioning to worker ownership, cooperative developers and technical assistance providers, democratic workplaces implementing participatory practices.</p>
-                    
-                    <p><strong>Connection to TPOW:</strong> Integrates our Metawork Framework's Relationships domain with cooperative-specific conflict navigation, demonstrating how regenerative work principles apply in worker-owned enterprises.</p>
-                    
-                    <p><strong>Learn more:</strong> Contact training@colmenar.coop or visit <a href="https://colmenar.coop" target="_blank">colmenar.coop</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <h3>The Present of Work</h3>
-            <p>Six years of people proving that work can serve life instead of drain it.</p>
-            <p>Questions about joining a project? <a href="mailto:contact@presentofwork.org">contact@presentofwork.org</a></p>
-        </div>
-    </footer>
-</body>
-</html>
+                <p style="color: #6b7280; font-size: 0.875rem; margin-top: 20px;">
+                    Educational work fiscally sponsored through ISI. Consulting through CrowdWork cooperative. 
+                    Connected with networks exploring regenerative approaches to collaboration.
