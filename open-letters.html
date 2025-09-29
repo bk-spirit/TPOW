@@ -912,46 +912,57 @@
     <script>
         let currentLetter = 0;
         const letters = ['meaning', 'leaders', 'stuck', 'practitioners', 'funders', 'journey'];
+        let isUpdating = false;
         
         function showLetterByIndex(index) {
+            if (isUpdating) return;
+            isUpdating = true;
+            
             currentLetter = index;
             
-            // Update URL hash (without pushState to avoid iframe restrictions)
-            window.location.hash = letters[index];
-            
             // Update sidebar
-            document.querySelectorAll('.letter-item').forEach(item => item.classList.remove('active'));
-            document.querySelectorAll('.letter-item')[index].classList.add('active');
+            const letterItems = document.querySelectorAll('.letter-item');
+            letterItems.forEach((item, i) => {
+                if (i === index) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
             
-            // Update content
-            document.querySelectorAll('.letter-content').forEach(content => content.classList.remove('active'));
-            const activeLetter = document.querySelector(`[data-letter="${letters[index]}"]`);
+            // Update content - remove all active classes first
+            const letterContents = document.querySelectorAll('.letter-content');
+            letterContents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Add active to the selected letter
+            const activeLetter = document.querySelector(`.letter-content[data-letter="${letters[index]}"]`);
             if (activeLetter) {
                 activeLetter.classList.add('active');
                 
-                // Update navigation buttons for the active letter
+                // Update navigation buttons
                 const prevBtn = activeLetter.querySelector('.nav-btn:first-of-type');
                 const nextBtn = activeLetter.querySelector('.nav-btn:last-of-type');
                 const counter = activeLetter.querySelector('.letter-counter');
                 
-                if (prevBtn) prevBtn.disabled = (currentLetter === 0);
-                if (nextBtn) nextBtn.disabled = (currentLetter === letters.length - 1);
-                if (counter) counter.textContent = `Letter ${currentLetter + 1} of ${letters.length}`;
-                
-                // Scroll to top
-                document.querySelector('.content-area').scrollTop = 0;
+                if (prevBtn) prevBtn.disabled = (index === 0);
+                if (nextBtn) nextBtn.disabled = (index === letters.length - 1);
+                if (counter) counter.textContent = `Letter ${index + 1} of ${letters.length}`;
             }
-        }
-        
-        function loadLetterFromHash() {
-            const hash = window.location.hash.substring(1);
-            const index = letters.indexOf(hash);
             
-            if (index !== -1) {
-                showLetterByIndex(index);
-            } else {
-                showLetterByIndex(0);
+            // Update URL hash
+            if (window.location.hash !== '#' + letters[index]) {
+                window.location.hash = letters[index];
             }
+            
+            // Scroll to top
+            const contentArea = document.querySelector('.content-area');
+            if (contentArea) {
+                contentArea.scrollTop = 0;
+            }
+            
+            isUpdating = false;
         }
         
         function nextLetter() {
@@ -966,30 +977,40 @@
             }
         }
         
-        // Initialize after DOM is loaded
-        document.addEventListener('DOMContentLoaded', function() {
+        // Initialize
+        (function() {
             // Letter item clicks
-            document.querySelectorAll('.letter-item').forEach((item, index) => {
-                item.addEventListener('click', () => {
+            const letterItems = document.querySelectorAll('.letter-item');
+            letterItems.forEach((item, index) => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
                     showLetterByIndex(index);
                 });
             });
             
-            // Load correct letter on page load based on URL hash
-            loadLetterFromHash();
+            // Load from hash on page load
+            const hash = window.location.hash.substring(1);
+            const index = letters.indexOf(hash);
+            showLetterByIndex(index !== -1 ? index : 0);
             
-            // Handle browser back/forward buttons
-            window.addEventListener('hashchange', loadLetterFromHash);
+            // Handle hash changes
+            window.addEventListener('hashchange', function() {
+                const hash = window.location.hash.substring(1);
+                const index = letters.indexOf(hash);
+                if (index !== -1 && index !== currentLetter) {
+                    showLetterByIndex(index);
+                }
+            });
             
             // Keyboard navigation
-            document.addEventListener('keydown', (e) => {
+            document.addEventListener('keydown', function(e) {
                 if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
                     nextLetter();
                 } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
                     previousLetter();
                 }
             });
-        });
+        })();
     </script>
 </body>
 </html>
