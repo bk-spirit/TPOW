@@ -913,13 +913,6 @@
         let currentLetter = 0;
         const letters = ['meaning', 'leaders', 'stuck', 'practitioners', 'funders', 'journey'];
         
-        // Letter item clicks
-        document.querySelectorAll('.letter-item').forEach((item, index) => {
-            item.addEventListener('click', () => {
-                showLetterByIndex(index);
-            });
-        });
-        
         function showLetterByIndex(index) {
             currentLetter = index;
             
@@ -933,29 +926,31 @@
             // Update content
             document.querySelectorAll('.letter-content').forEach(content => content.classList.remove('active'));
             const activeLetter = document.querySelector(`[data-letter="${letters[index]}"]`);
-            activeLetter.classList.add('active');
-            
-            // Update navigation buttons for the active letter
-            const prevBtn = activeLetter.querySelector('.nav-btn:first-of-type');
-            const nextBtn = activeLetter.querySelector('.nav-btn:last-of-type');
-            const counter = activeLetter.querySelector('.letter-counter');
-            
-            if (prevBtn) prevBtn.disabled = (currentLetter === 0);
-            if (nextBtn) nextBtn.disabled = (currentLetter === letters.length - 1);
-            if (counter) counter.textContent = `Letter ${currentLetter + 1} of ${letters.length}`;
-            
-            // Scroll to top
-            document.querySelector('.content-area').scrollTop = 0;
+            if (activeLetter) {
+                activeLetter.classList.add('active');
+                
+                // Update navigation buttons for the active letter
+                const prevBtn = activeLetter.querySelector('.nav-btn:first-of-type');
+                const nextBtn = activeLetter.querySelector('.nav-btn:last-of-type');
+                const counter = activeLetter.querySelector('.letter-counter');
+                
+                if (prevBtn) prevBtn.disabled = (currentLetter === 0);
+                if (nextBtn) nextBtn.disabled = (currentLetter === letters.length - 1);
+                if (counter) counter.textContent = `Letter ${currentLetter + 1} of ${letters.length}`;
+                
+                // Scroll to top
+                document.querySelector('.content-area').scrollTop = 0;
+            }
         }
         
         function loadLetterFromHash() {
-            const hash = window.location.hash.substring(1); // Remove the #
+            const hash = window.location.hash.substring(1);
             const index = letters.indexOf(hash);
             
             if (index !== -1) {
                 showLetterByIndex(index);
             } else {
-                showLetterByIndex(0); // Default to first letter
+                showLetterByIndex(0);
             }
         }
         
@@ -971,19 +966,29 @@
             }
         }
         
-        // Load correct letter on page load based on URL hash
-        window.addEventListener('load', loadLetterFromHash);
-        
-        // Handle browser back/forward buttons
-        window.addEventListener('hashchange', loadLetterFromHash);
-        
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-                nextLetter();
-            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-                previousLetter();
-            }
+        // Initialize after DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Letter item clicks
+            document.querySelectorAll('.letter-item').forEach((item, index) => {
+                item.addEventListener('click', () => {
+                    showLetterByIndex(index);
+                });
+            });
+            
+            // Load correct letter on page load based on URL hash
+            loadLetterFromHash();
+            
+            // Handle browser back/forward buttons
+            window.addEventListener('hashchange', loadLetterFromHash);
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                    nextLetter();
+                } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                    previousLetter();
+                }
+            });
         });
     </script>
 </body>
