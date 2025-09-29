@@ -366,7 +366,7 @@
                 <a href="open-letters.html" class="active">Open Letters</a>
             </div>
             
-            <a href="https://calendar.google.com" class="cta-btn" target="_blank">Next CommDojo</a>
+            <a href="mailto:team@presentofwork.org" class="cta-btn">Contact Us</a>
         </div>
     </nav>
 
@@ -429,6 +429,8 @@
                         <p>Work as commodity. Work as the thing you do from 9-5 to earn money, separate from who you are and what you care about. Work measured by productivity metrics, defined by job descriptions, organized into careers. Work that extracts value from people and planet in service to efficiency and competition.</p>
 
                         <p>But there's another kind of work that's almost completely disappeared from how we talk and think. When my Quechua teacher described <em>llankay</em>, she wasn't translating "work" - she was describing one of three fundamental principles that can't exist separately. <em>Llankay</em> (work), <em>munay</em> (love), and <em>yachay</em> (wisdom) form a unity. You can't have one without the others.</p>
+
+                        <p><em>Note: Throughout these letters, we draw on wisdom traditions from Andean, Buddhist, and indigenous cultures as ways to think about work outside the colonial industrial construct. We're not claiming expertise in these traditions, but finding inspiration in how they refuse the separation between work, life, meaning, and relationship that Western industrialism demands.</em></p>
 
                         <p>This is work as tending. Caring for children is work. Growing food is work. Healing relationships is work. Creating beauty is work. Solving problems together is work. Maintaining community is work. And it's all done with reverence for Pachamama - not as metaphor, but as recognition that we're part of living systems, not separate from them.</p>
 
@@ -602,6 +604,20 @@
 
                         <p>You don't need to figure this all out at once. Join a community call. Practice bringing slightly more presence to your current work, whatever it is. Download some protocols and try them. Find a few people who share your questions - that matters more than any specific methodology.</p>
 
+                        <p>To connect with us: email team@presentofwork.org or visit presentofwork.org to learn about upcoming community calls and offerings.</p>
+
+                        <h3>What This Isn't</h3>
+
+                        <p>Before you engage, let's be clear about what we're not offering. This isn't therapy or career coaching. It's not a guarantee of transformation or a replacement for organizing and activism. It's not a quick fix for burnout or a blueprint for escaping your job. We're not going to solve your problems. We're offering space to develop capacities for meeting complexity, and that's slower and messier than most solutions-oriented approaches.</p>
+
+                        <h3>Practical Barriers</h3>
+
+                        <p>Maybe you're reading this thinking "this sounds nice but I have three kids and work two jobs" or "I barely have energy for what's already on my plate." That's real. The dojos and guilds require time commitment - monthly for dojos, weekly for guilds. They require emotional energy to show up authentically. They require willingness to be uncomfortable as you develop new capacities.</p>
+
+                        <p>If you can't make that commitment right now, that's okay. The free community resources exist for exactly this reason. You can engage at whatever level matches your actual capacity, not what you wish your capacity was. And you can always start with just observing yourself more carefully in situations you're already in - that costs nothing but attention.</p>
+
+                        <h3>The Practice Continues</h3>
+
                         <p>Notice when you're matching (applying what you already know) versus meeting (staying curious about what's actually here). Notice when you're performing your professional role versus bringing your whole self. Notice the difference between relationships that feel transactional and relationships that feel alive. Just notice. That's the practice.</p>
 
                         <p>The development of your capacity to observe, to be present, to navigate complexity - this matters more than your title or your organization's transformation. Because you take these capacities with you wherever you go. They're the actual work, regardless of what your job description says.</p>
@@ -692,6 +708,8 @@
 
                         <p>If you're doing similar work, I'd welcome connection. Not to compare best practices or pitch what we offer, but to learn from your experiments. To share honestly about what's working and what isn't. To be in solidarity with the difficulty of this work.</p>
 
+                        <p>Reach out at team@presentofwork.org or find us at presentofwork.org.</p>
+
                         <p>Because here's what I'm certain of: transformation happens through relationship, and relationship requires material conditions that allow people to show up fully. We haven't figured out how to create those conditions consistently. But we're committed to continuing the experiment, to being honest about failures, to learning in community rather than trying to solve this alone.</p>
 
                         <div class="signature">
@@ -769,6 +787,8 @@
                         <p>If you're interested in exploring alternatives to extractive models in your own resource stewardship, we'd welcome conversation. Not conversation as prelude to funding proposal. Genuine conversation about what we're all learning, what confuses us, what we're trying that's failing, what's working in unexpected ways.</p>
 
                         <p>Maybe you'd be interested in participating in our Reimagining Philanthropy lab. Maybe you'd want to support others' participation. Maybe you just want to stay connected as we share what we're learning. Maybe none of this resonates and that's okay too.</p>
+
+                        <p>Contact us at team@presentofwork.org to explore what might be possible.</p>
 
                         <p>The invitation is to relationship first, with resource flow emerging from authentic partnership rather than predetermined transaction. I don't know if this is naive or necessary. Probably both.</p>
 
@@ -896,12 +916,15 @@
         // Letter item clicks
         document.querySelectorAll('.letter-item').forEach((item, index) => {
             item.addEventListener('click', () => {
-                showLetter(index);
+                showLetterByIndex(index);
             });
         });
         
-        function showLetter(index) {
+        function showLetterByIndex(index) {
             currentLetter = index;
+            
+            // Update URL hash (without pushState to avoid iframe restrictions)
+            window.location.hash = letters[index];
             
             // Update sidebar
             document.querySelectorAll('.letter-item').forEach(item => item.classList.remove('active'));
@@ -925,17 +948,34 @@
             document.querySelector('.content-area').scrollTop = 0;
         }
         
+        function loadLetterFromHash() {
+            const hash = window.location.hash.substring(1); // Remove the #
+            const index = letters.indexOf(hash);
+            
+            if (index !== -1) {
+                showLetterByIndex(index);
+            } else {
+                showLetterByIndex(0); // Default to first letter
+            }
+        }
+        
         function nextLetter() {
             if (currentLetter < letters.length - 1) {
-                showLetter(currentLetter + 1);
+                showLetterByIndex(currentLetter + 1);
             }
         }
         
         function previousLetter() {
             if (currentLetter > 0) {
-                showLetter(currentLetter - 1);
+                showLetterByIndex(currentLetter - 1);
             }
         }
+        
+        // Load correct letter on page load based on URL hash
+        window.addEventListener('load', loadLetterFromHash);
+        
+        // Handle browser back/forward buttons
+        window.addEventListener('hashchange', loadLetterFromHash);
         
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
